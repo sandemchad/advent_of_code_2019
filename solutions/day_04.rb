@@ -1,4 +1,4 @@
-require_relative "solution_helper"
+require_relative 'solution_helper'
 include SolutionHelper
 
 def array_increases_only(arr)
@@ -14,16 +14,16 @@ end
 def one_standalone_pair?(password)
   chunks = password.to_s.split('').chunk { |char| char }.to_a
 
-  chunks.any? { |char, chunk| chunk.count == 2 }
+  chunks.any? { |_char, chunk| chunk.count == 2 }
 end
 
-def solve_a(data = "246540-787419")
+def solve_a(data = '246540-787419')
   lower, upper = data.split('-').map(&:to_i)
 
   (lower..upper).select { |i| viable_password?(i) }.count
 end
 
-def solve_b(data = "246540-787419")
+def solve_b(data = '246540-787419')
   lower, upper = data.split('-').map(&:to_i)
 
   (lower..upper).select { |i| viable_password?(i) && one_standalone_pair?(i) }.count
